@@ -17,10 +17,7 @@ function Home() {
   const[open, setOpen] = useState(false);
   const[movieId, setMovieId] = useState('');
 
-  const baseUrl = "https://z7wi4gpnd6.execute-api.us-east-1.amazonaws.com/stage/recommendedmovies1";
-  const baseUrlBOXOffice= "https://s3fg8dpp37.execute-api.us-east-1.amazonaws.com/stage/boxofficemovies";
-  const theatherMovies = "https://3pc0qac8vi.execute-api.us-east-1.amazonaws.com/stage/intheatersmovies";
-  const recommendMovies="https://z6mb46uo8i.execute-api.us-east-1.amazonaws.com/stage/recommendedmovies";
+  
 
 
   useEffect(() => {
@@ -50,68 +47,11 @@ function Home() {
       });
   };
 
-  const getMoviesfromAws = () => {
-    axios
-      .get(baseUrl)
-      .then((resp) => {
-        console.log("AWS MOVIES COUNT -> " + resp.data.Search);
-        resp.data.Search.forEach(element => {
-          console.log(element.Title)
-          
-        });
-        
-      })
-      .catch((err) => {
-        console.error("Error " + err);
-      });
-  };
 
-  const getMoviesfromAws1 = () => {
-    axios
-      .get(recommendMovies)
-      .then((resp) => {
-        console.log("AWS Recommend Movies-> " + resp.data.Search);
-        resp.data.Search.forEach(element => {
-          console.log(element.Title)
-          
-        });
-        
-      })
-      .catch((err) => {
-        console.error("Error " + err);
-      });
-  };
-  const getBoxOfficeMoviesAWS = () => {
-    axios
-      .get(baseUrlBOXOffice)
-      .then((resp) => {
-        console.log("AWS BoxOffice Movies  -> " + resp);
-        resp.data.items.forEach(element => {
-          console.log(element.title)
-          
-        });
-        
-      })
-      .catch((err) => {
-        console.error("Error " + err);
-      });
-  };
 
-  const getMoviesInTheaterAWS = () => {
-    axios
-      .get(theatherMovies)
-      .then((resp) => {
-        console.log("AWS Theater Movies  -> " + resp);
-        resp.data.items.forEach(element => {
-          console.log(element.title)
-          
-        });
-        
-      })
-      .catch((err) => {
-        console.error("Error " + err);
-      });
-  };
+
+ 
+
 
   const getMoviesInTheaters = () => {
     axios
