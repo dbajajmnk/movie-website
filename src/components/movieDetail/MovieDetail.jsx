@@ -30,7 +30,7 @@ const MovieDetail = () => {
       if(seletedObject===undefined)
       {
       var params = new URLSearchParams();
-      params.append("apikey", '18a01f17');
+      params.append("apikey", process.env.REACT_APP_OMD_API_KEY);
       params.append("i",  imdbID);
   
       var request = { params: params };
@@ -56,7 +56,9 @@ const MovieDetail = () => {
      console.log("Selected  Trailer Object",seletedTrailerObject)
       if(seletedTrailerObject===undefined)
       {
-      axios.get(process.env.REACT_APP_TRAILER_URL + imdbID)
+        let callUrl = process.env.REACT_APP_TRAILER_URL + imdbID
+        console.log("Call url",callUrl)
+      axios.get(callUrl)
       .then(resp => {
         console.log("getMovieTrailer response -> " + resp.data);
         LocalCacheHandler.addMovieTrailor(resp.data)
