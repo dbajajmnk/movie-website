@@ -28,15 +28,8 @@ function Home() {
   }, []);
 
   const getMovies = () => {
-    var params = new URLSearchParams();
-    params.append("apikey", "18a01f17");
-    params.append("s", "batman");
-    params.append("page", 1);
-
-    var request = { params: params };
-
     axios
-      .get(process.env.REACT_APP_AWS_URL, request)
+      .get(process.env.REACT_APP_AWS_URL)
       .then((resp) => {
         console.log("getAllMovies count -> " + resp.data.Search.length);
         setMovies(resp.data.Search);
